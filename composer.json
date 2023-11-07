@@ -1,0 +1,22 @@
+{
+    "name": "kmlpandey77/ndate",
+    "description": "Nepali date helper",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kmlpandey77\\Ndate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "role": "Developer",
+            "name": "Kamal Pandey",
+            "email": "kml.pandey77@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "laravel/pint": "^1.13",
+        "phpunit/phpunit": "^10"
+    }
+}
