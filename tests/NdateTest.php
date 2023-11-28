@@ -9,13 +9,13 @@ class NdateTest extends TestCase
 {
     public function test_english_date_to_nepali_date()
     {
-        $date = new Ndate('2023-11-07');
+        $ad = '2023-11-07';
+        $bs = '2080-07-21';
 
+        $date = (new Ndate)->to_bs($ad);
         var_dump($date);
 
-        exit();
-
-
+        $this->assertSame($bs, "$date");
 
     }
 
