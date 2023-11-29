@@ -1,16 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kmlpandey77\Ndate;
+
 use Carbon\Carbon;
+use Exception;
 use Kmlpandey77\Ndate\Constants\Year;
 
 class AdToBs
 {
-    public $year;
-    public $month;
-    public $day;
-    public $number_of_day;
+    public int $year;
 
+    public int $month;
+
+    public int $day;
+
+    public int $number_of_day;
+
+    /**
+     * @throws Exception
+     */
     public function __construct($date = null)
     {
         $date = $date ? Carbon::parse($date) : Carbon::now();
@@ -20,7 +30,12 @@ class AdToBs
         $this->eng_to_nep($date->format('Y-m-d'));
     }
 
-    public function eng_to_nep($date)
+    /**
+     * Ad date convert to bs date
+     *
+     * @throws Exception
+     */
+    public function eng_to_nep($date): void
     {
         $total_ad_days = $this->getTotalAdDays($date);
 
@@ -29,12 +44,12 @@ class AdToBs
         $total_bs_days = Year::BS_DAY;
 
         while ($total_ad_days != 0) {
-            $currentYear = Year::BS[$i][$j];
+            $current_month_days = Year::BS[$i][$j];
 
             $total_bs_days++;
             $this->number_of_day++;
 
-            if ($total_bs_days > $currentYear) {
+            if ($total_bs_days > $current_month_days) {
                 $this->month++;
                 $total_bs_days = 1;
                 $j++;
@@ -50,21 +65,28 @@ class AdToBs
             }
 
             $total_ad_days--;
-            var_dump($this);
-
-            die();
         }
+
+        $this->day = $total_bs_days;
     }
 
-    private function getTotalAdDays($date)
+    /**
+     * Calculate total days to convert
+     *
+     * @throws Exception
+     */
+    private function getTotalAdDays($date): int
     {
         $start_date = new \DateTimeImmutable(Year::AD_START_DATE);
         $end_date = new \DateTimeImmutable($date);
 
-        return (int) $end_date->diff($start_date)->format("%a");
+        return (int) $end_date->diff($start_date)->format('%a');
     }
 
-    private function setDateConstant()
+    /**
+     * Set up initial date data
+     */
+    private function setDateConstant(): void
     {
         $this->year = Year::BS_YEAR;
         $this->month = Year::BS_MONTH;
@@ -76,5 +98,4 @@ class AdToBs
     {
         return "{$this->year}-0{$this->month}-{$this->day}";
     }
-
 }
