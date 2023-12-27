@@ -96,6 +96,12 @@ class AdToBs
 
     public function __toString()
     {
-        return "{$this->year}-0{$this->month}-{$this->day}";
+        $date = $this->year;
+        $date .= '-';
+        $date .= Helper::addLeadingZeros($this->month, 2);
+        $date .= '-';
+        $date .= Helper::addLeadingZeros($this->day, 2);
+
+        return $date;
     }
 }

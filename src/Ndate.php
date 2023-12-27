@@ -2,13 +2,18 @@
 
 namespace Kmlpandey77\Ndate;
 
+use Exception;
+
 class Ndate
 {
     public function __construct()
     {
     }
 
-    public static function to_bs($date, $format = 'Y-m-d')
+    /**
+     * @throws Exception
+     */
+    public static function to_bs($date, $format = 'Y-m-d'): AdToBs
     {
         return new AdToBs($date);
     }
