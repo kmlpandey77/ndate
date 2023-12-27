@@ -7,9 +7,13 @@ namespace Kmlpandey77\Ndate;
 use Carbon\Carbon;
 use Exception;
 use Kmlpandey77\Ndate\Constants\Year;
+use Kmlpandey77\Ndate\Contacts\ToDateStringInterface;
+use Kmlpandey77\Ndate\Traits\ToDateStringTrait;
 
-class AdToBs
+class AdToBs implements ToDateStringInterface
 {
+    use ToDateStringTrait;
+
     public int $year;
 
     public int $month;
@@ -96,6 +100,8 @@ class AdToBs
 
     public function __toString()
     {
+        return $this->format();
+
         $date = $this->year;
         $date .= '-';
         $date .= Helper::addLeadingZeros($this->month, 2);

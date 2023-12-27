@@ -14,6 +14,16 @@ class Weekday
         'शनिबार',
     ];
 
+    const NP_SHORT = [
+        'आईत',
+        'सोम',
+        'मंगल',
+        'बुध',
+        'बिही',
+        'शुक्र',
+        'शनि',
+    ];
+
     const EN = [
         'Sunday',
         'Monday',
@@ -22,5 +32,15 @@ class Weekday
         'Thursday',
         'Friday',
         'Saturday',
+    ];
+
+    const EN_SHORT = [
+        'Sun',
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat',
     ];
 }
