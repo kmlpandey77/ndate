@@ -14,24 +14,32 @@ class AdToBs implements ToDateStringInterface
 {
     use ToDateStringTrait;
 
-    public int $year;
+    protected int $year;
 
-    public int $month;
+    protected int $month;
 
-    public int $day;
+    protected int $day;
 
-    public int $number_of_day;
+    protected int $number_of_day;
+
+    protected string $lang;
 
     /**
      * @throws Exception
      */
-    public function __construct($date = null)
+    public function __construct($date = null, ?string $format = null, string $lang = 'en')
     {
         $date = $date ? Carbon::parse($date) : Carbon::now();
 
+        if ($format) {
+            $this->format = $format;
+        }
+
+        $this->lang = $lang;
+
         $this->setDateConstant();
 
-        $this->eng_to_nep($date->format('Y-m-d'));
+        $this->convert($date->format('Y-m-d'));
     }
 
     /**
@@ -39,7 +47,7 @@ class AdToBs implements ToDateStringInterface
      *
      * @throws Exception
      */
-    public function eng_to_nep($date): void
+    public function convert($date): void
     {
         $total_ad_days = $this->getTotalAdDays($date);
 
@@ -98,16 +106,46 @@ class AdToBs implements ToDateStringInterface
         $this->number_of_day = Year::BS_NUMBER_OF_DAY;
     }
 
+    public function lang(string $lang): self
+    {
+        $this->lang = $lang;
+
+        return $this;
+    }
+
+    public function getDay(): int|string
+    {
+        return $this->lang == 'np' ? $this->toNepaliNumber($this->day) : $this->day;
+    }
+
+    public function getMonth(): int|string
+    {
+        return $this->lang == 'np' ? $this->toNepaliNumber($this->month) : $this->month;
+    }
+
+    public function getYear(): int|string
+    {
+        return $this->lang == 'np' ? $this->toNepaliNumber($this->year) : $this->year;
+    }
+
     public function __toString()
     {
-        return $this->format();
+        return $this->toStringFormat();
+    }
 
-        $date = $this->year;
-        $date .= '-';
-        $date .= Helper::addLeadingZeros($this->month, 2);
-        $date .= '-';
-        $date .= Helper::addLeadingZeros($this->day, 2);
+    private function toNepaliNumber($number): string
+    {
+        $nepaliNumbers = [
+            '0' => '०', '1' => '१', '2' => '२', '3' => '३', '4' => '४',
+            '5' => '५', '6' => '६', '7' => '७', '8' => '८', '9' => '९',
+        ];
 
-        return $date;
+        $convertedNumber = '';
+
+        foreach (str_split((string) $number) as $num) {
+            $convertedNumber .= $nepaliNumbers[$num] ?? $num;
+        }
+
+        return $convertedNumber;
     }
 }
