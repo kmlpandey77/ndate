@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Exception;
 use Kmlpandey77\Ndate\Constants\Year;
 use Kmlpandey77\Ndate\Contacts\ToDateStringInterface;
+use Kmlpandey77\Ndate\Exceptions\InvalidDateException;
 use Kmlpandey77\Ndate\Traits\ToDateStringTrait;
 
 class AdToBs implements ToDateStringInterface
@@ -30,6 +31,10 @@ class AdToBs implements ToDateStringInterface
     public function __construct($date = null, ?string $format = null, string $lang = 'en')
     {
         $date = $date ? Carbon::parse($date) : Carbon::now();
+
+        if (!$this->isValidDate($date)) {
+            throw new InvalidDateException('Invalid date');
+        }
 
         if ($format) {
             $this->format = $format;
@@ -113,6 +118,13 @@ class AdToBs implements ToDateStringInterface
         return $this;
     }
 
+    public function format(string $format): string
+    {
+        $this->format = $format;
+
+        return $this->toStringFormat();
+    }
+
     public function getDay(): int|string
     {
         return $this->lang == 'np' ? $this->toNepaliNumber($this->day) : $this->day;
@@ -147,5 +159,16 @@ class AdToBs implements ToDateStringInterface
         }
 
         return $convertedNumber;
+    }
+
+    /**
+     * Check given date is valid or not
+     *
+     * @param  Carbon  $date
+     * @return bool
+     */
+    private function isValidDate(Carbon $date): bool
+    {
+        return $date->between(Year::AD_START_DATE, Year::AD_END_DATE);
     }
 }

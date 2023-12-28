@@ -11,13 +11,6 @@ trait ToDateStringTrait
 {
     private string $format = 'Y-m-d';
 
-    public function format(string $format): string
-    {
-        $this->format = $format;
-
-        return $this->toStringFormat();
-    }
-
     /**
      * Date format to string
      */

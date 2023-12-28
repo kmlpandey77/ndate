@@ -12,6 +12,7 @@ interface ToDateStringInterface
 
         'm' => 'month_with_leading_zero',
         'M' => 'month_name',
+        'n' => 'getMonth',
 
         'Y' => 'getYear',
     ];
