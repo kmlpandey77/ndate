@@ -12,31 +12,10 @@ class Ndate
     const EN = 'en';
     const NP = 'np';
 
-
-    protected AdToBs $date;
-
-    protected int $type;
-
     /**
      * @throws Exception
      */
-    public function __construct($date, ?string $format = null, ?int $type = null, string $lang = 'en')
-    {
-        $this->type = $type ?? self::BS;
-
-
-        $this->date = new AdToBs($date, $format, $lang);
-    }
-
-    public function __toString(): string
-    {
-        return "{$this->date}";
-    }
-
-    /**
-     * @throws Exception
-     */
-    public static function to_bs($date, ?string $format = null, string $lang = 'en'): string
+    public static function to_bs(?string $date = null, ?string $format = null, string $lang = 'en')
     {
         return new AdToBs($date, $format, $lang);
     }

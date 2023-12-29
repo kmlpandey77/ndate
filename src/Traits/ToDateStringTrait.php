@@ -16,7 +16,6 @@ trait ToDateStringTrait
      */
     protected function toStringFormat(): string
     {
-
         $formatString = preg_replace('/[^a-zA-Z]+/', '', $this->format);
 
         $search = str_split($formatString);
