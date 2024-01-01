@@ -15,24 +15,24 @@ class AdToBs implements ToDateStringInterface
 {
     use ToDateStringTrait;
 
-    protected int $year;
+    private int $year;
 
-    protected int $month;
+    private int $month;
 
-    protected int $day;
+    private int $day;
 
-    protected int $number_of_day;
+    private int $number_of_day;
 
-    protected string $lang;
+    private string $lang;
 
     /**
-     * @throws Exception
+     * @throws InvalidDateException
      */
     public function __construct($date = null, ?string $format = null, string $lang = 'en')
     {
         $date = $date ? Carbon::parse($date) : Carbon::now();
 
-        if (!$this->isValidDate($date)) {
+        if (! $this->isValidDate($date)) {
             throw new InvalidDateException('Invalid date');
         }
 
@@ -163,9 +163,6 @@ class AdToBs implements ToDateStringInterface
 
     /**
      * Check given date is valid or not
-     *
-     * @param  Carbon  $date
-     * @return bool
      */
     private function isValidDate(Carbon $date): bool
     {

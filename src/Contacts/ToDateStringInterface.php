@@ -21,6 +21,8 @@ interface ToDateStringInterface
 
     public function short_day_name(): string;
 
+    public function full_day_name(): string;
+
     public function month_with_leading_zero(): string;
 
     public function month_name(): string;

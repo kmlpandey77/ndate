@@ -19,19 +19,20 @@ trait ToDateStringTrait
         $formatString = preg_replace('/[^a-zA-Z]+/', '', $this->format);
 
         $search = str_split($formatString);
-        $replace = array_map(function ($key) {
+        $replace = [];
+        foreach ($search as $key) {
             $method = self::FORMATTER[$key] ?? null;
 
             if ($method && method_exists(self::class, $method)) {
-                return $this->$method();
+                $replace[$key] = $this->$method();
             } elseif ($method && property_exists(self::class, $method)) {
-                return $this->$method;
+                $replace[$key] = $this->$method;
+            } else {
+                $replace[$key] = $key;
             }
+        }
 
-            return $key;
-        }, $search);
-
-        return str_replace($search, $replace, $this->format);
+        return strtr($this->format, $replace);
     }
 
     /**
@@ -78,7 +79,7 @@ trait ToDateStringTrait
     public function month_name(): string
     {
         return $this->lang == Ndate::NP
-            ? Weekday::NP[$this->number_of_day - 1]
+            ? Month::NP[$this->month - 1]
             : Month::NP_EN[$this->month - 1];
     }
 }

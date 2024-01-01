@@ -7,9 +7,11 @@ use Exception;
 class Ndate
 {
     const BS = 1;
+
     const AD = 2;
 
     const EN = 'en';
+
     const NP = 'np';
 
     /**

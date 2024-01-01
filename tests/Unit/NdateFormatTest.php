@@ -5,20 +5,23 @@ use Kmlpandey77\Ndate\Ndate;
 test('AD date convert to BS Date with format', function () {
     $ad = '2023-11-08';
     $bs = '22/07/2080';
-    $date_to_bs = Ndate::to_bs($ad, 'd/m/Y');
-    $date_to_bs_1 = Ndate::to_bs($ad)->format('d/m/Y');
+    $bs_np = '२२/०७/२०८०';
 
-    expect("$date_to_bs")->toBe($bs);
-    expect("$date_to_bs_1")->toBe($bs);
+    $date = Ndate::to_bs($ad, 'd/m/Y');
+
+    expect("$date")->toBe($bs)
+        ->and("{$date->format('d/m/Y')}")->toBe($bs)
+        ->and("{$date->lang(Ndate::NP)}")->toBe($bs_np);
 });
 
-test('Date format with month name', function () {
+test('AD date convert to BS Date with days and month format', function () {
     $ad = '2023-11-08';
-    $bs = 'Kartik 22, 2080';
+    $bs = 'Wed, 22 Kartik, 2080';
 
-    $date_to_bs = Ndate::to_bs($ad, 'M d, Y');
-    $date_to_bs_1 = Ndate::to_bs($ad)->format('M d, Y');
+    $date = Ndate::to_bs($ad, 'D, d M, Y');
+    $date_to_bs_1 = Ndate::to_bs($ad);
 
-    expect("$date_to_bs")->toBe($bs);
-    expect("$date_to_bs_1")->toBe($bs);
+    expect("$date")->toBe($bs)
+        ->and("{$date->format('l, d M, Y')}")->toBe('Wednesday, 22 Kartik, 2080')
+        ->and("{$date->lang(Ndate::NP)}")->toBe('बुधवार, २२ कार्तिक, २०८०');
 });
