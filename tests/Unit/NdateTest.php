@@ -10,8 +10,8 @@ test('AD date convert to BS Date', function () {
 
     $date_to_bs = Ndate::to_bs($ad);
 
-    expect("{$date_to_bs}")->toBe($bs);
-    expect("{$date_to_bs->lang(Ndate::NP)}")->toBe($bs_np);
+    expect("{$date_to_bs}")->toBe($bs)
+        ->and("{$date_to_bs->lang(Ndate::NP)}")->toBe($bs_np);
 });
 
 test('Invalid Date', function () {

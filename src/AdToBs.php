@@ -152,13 +152,7 @@ class AdToBs implements ToDateStringInterface
             '5' => '५', '6' => '६', '7' => '७', '8' => '८', '9' => '९',
         ];
 
-        $convertedNumber = '';
-
-        foreach (str_split((string) $number) as $num) {
-            $convertedNumber .= $nepaliNumbers[$num] ?? $num;
-        }
-
-        return $convertedNumber;
+        return str_replace(array_keys($nepaliNumbers), array_values($nepaliNumbers), (string) $number);
     }
 
     /**
