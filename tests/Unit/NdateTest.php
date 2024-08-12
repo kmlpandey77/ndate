@@ -80,7 +80,7 @@ test('test date 4', function () {
     expect("{$date_to_bs}")->toBe($bs);
 });
 
-test('sanjay date', function () {
+test('test date 5', function () {
 
     $ad = '1987-11-08';
     $bs = '2044-07-22';
@@ -90,7 +90,7 @@ test('sanjay date', function () {
     expect("{$date_to_bs}")->toBe($bs);
 });
 
-test('sanjayasda date', function () {
+test('test date 6', function () {
 
     $ad = '1988-08-09';
     $bs = '2045-04-25';
