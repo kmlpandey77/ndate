@@ -21,4 +21,9 @@ class Ndate
     {
         return new AdToBs($date, $format, $lang);
     }
+
+    public static function to_ad(?string $date = null, string $format = 'Y-m-d', string $lang = 'en')
+    {
+        return new BsToAd($date, $format, $lang);
+    }
 }

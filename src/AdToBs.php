@@ -108,7 +108,7 @@ class AdToBs implements ToDateStringInterface
         $this->year = Year::BS_YEAR;
         $this->month = Year::BS_MONTH;
         $this->day = Year::BS_DAY;
-        $this->number_of_day = Year::BS_NUMBER_OF_DAY;
+        $this->number_of_day = Year::NUMBER_OF_DAY;
     }
 
     public function lang(string $lang): self
