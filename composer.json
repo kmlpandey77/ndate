@@ -20,7 +20,7 @@
         "pestphp/pest": "^2.25"
     },
     "require": {
-        "php": "8.2",
+        "php": "^8.0",
         "nesbot/carbon": "^2.71"
     },
     "config": {
