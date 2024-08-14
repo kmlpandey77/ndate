@@ -61,6 +61,6 @@ echo $date_to_ad // OUTPUT: 2023-11-08
 # Example 02
 $date_to_ad = Ndate::to_ad("2080-07-22", 'd/m/Y');
 
-echo $date_to_bs // OUTPUT: 08/11/2023
+echo $date_to_ad // OUTPUT: 08/11/2023
 ```
 
