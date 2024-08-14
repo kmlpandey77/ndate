@@ -1,6 +1,6 @@
 {
     "name": "kmlpandey77/ndate",
-    "description": "Nepali date helper",
+    "description": "Nepali date converter",
     "type": "library",
     "license": "MIT",
     "autoload": {
