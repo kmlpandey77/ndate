@@ -33,7 +33,7 @@ class AdToBs implements ToDateStringInterface
         $date = $date ? Carbon::parse($date) : Carbon::now();
 
         if (! $this->isValidDate($date)) {
-            throw new InvalidDateException('Invalid date');
+            throw new InvalidDateException('Invalid date: '. $date);
         }
 
         if ($format) {
