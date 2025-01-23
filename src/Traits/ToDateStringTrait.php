@@ -7,6 +7,12 @@ use Kmlpandey77\Ndate\Constants\Weekday;
 use Kmlpandey77\Ndate\Helper;
 use Kmlpandey77\Ndate\Ndate;
 
+/**
+ * @property int $day
+ * @property int $month
+ * @property int $number_of_day
+ * @property string $lang
+ */
 trait ToDateStringTrait
 {
     private string $format = 'Y-m-d';

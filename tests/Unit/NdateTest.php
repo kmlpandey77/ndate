@@ -27,10 +27,9 @@ test('Invalid Date', function () {
     $ad = '2043-11-08';
     $bs = '2101-11-08';
 
-    expect(fn() => Ndate::to_bs($ad))->toThrow(InvalidDateException::class)
-        ->and(fn() => Ndate::to_ad($bs))->toThrow(InvalidDateException::class);
+    expect(fn () => Ndate::to_bs($ad))->toThrow(InvalidDateException::class)
+        ->and(fn () => Ndate::to_ad($bs))->toThrow(InvalidDateException::class);
 });
-
 
 test('Asar 2081 date issue', function () {
     $ad = '2024-07-03';
@@ -51,7 +50,7 @@ test('July 1937 date issue', function () {
     $to_ad = Ndate::to_ad($bs);
 
     expect("{$to_bs}")->toBe($bs)
-        ->and("{$to_ad}")->toBe($ad);;
+        ->and("{$to_ad}")->toBe($ad);
 });
 
 test('Date One', function () {
