@@ -53,7 +53,7 @@ class BsToAd
         $defEdd = Year::AD_DAY - 1;
         $defNyy = Year::BS_YEAR;
 
-        $totalNDays = $this->calculateTotalNDays((int)$yy, (int)$mm, (int)$dd, $defNyy);
+        $totalNDays = $this->calculateTotalNDays((int) $yy, (int) $mm, (int) $dd, $defNyy);
         $this->finalDate = $this->calculateAdDate($totalNDays, $defEyy, $defEmm, $defEdd);
     }
 
@@ -104,8 +104,8 @@ class BsToAd
             }
         }
 
-        $formattedMonth = str_pad((string)$month, 2, '0', STR_PAD_LEFT);
-        $formattedDay = str_pad((string)$day, 2, '0', STR_PAD_LEFT);
+        $formattedMonth = str_pad((string) $month, 2, '0', STR_PAD_LEFT);
+        $formattedDay = str_pad((string) $day, 2, '0', STR_PAD_LEFT);
 
         return Carbon::parse("$year-$formattedMonth-$formattedDay");
     }

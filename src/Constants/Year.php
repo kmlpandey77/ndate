@@ -4,28 +4,31 @@ namespace Kmlpandey77\Ndate\Constants;
 
 class Year
 {
-
     const AD_START_DATE = '1913-04-13';
+
     const AD_END_DATE = '2043-04-14';
 
     const AD_YEAR = 1913;
+
     const AD_END_YEAR = 1943;
 
     const AD_MONTH = 4;
+
     const AD_END_MONTH = 4;
 
     const AD_DAY = 13;
+
     const AD_END_DAY = 14;
 
-
     const BS_YEAR = 1970;
+
     const BS_END_YEAR = 2100;
 
     const BS_MONTH = 1;
 
     const BS_DAY = 1;
 
-    const NUMBER_OF_DAY =  1;
+    const NUMBER_OF_DAY = 1;
 
     const BS = [
         [1970, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30],
